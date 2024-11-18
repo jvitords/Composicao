@@ -1,7 +1,7 @@
 package entities;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -54,8 +54,13 @@ public class Worker { // class do trabalhador
 	}
 	
 	public void getListContracts() {
+		int contadorDeContratos = 1;
 		for (HourContract contrato : listContracts) {
-			System.out.println("\nData: " + contrato.getDate() + "\nValor por hora: " + contrato.getValuePerHour() + "\nHoras trabalhadas: " + contrato.getHours() + "\nValor do contrato R$:" + contrato.totalValue());
+			System.out.println("---- Contrato #" +  contadorDeContratos +" ----");
+			System.out.println("\nData: " + contrato.getDate() 
+			+ "\nValor por hora: " + contrato.getValuePerHour() + 
+			"\nHoras trabalhadas: " + contrato.getHours() + 
+			"\nValor do contrato R$:" + contrato.totalValue());
 		}
 	}
 
@@ -70,20 +75,17 @@ public class Worker { // class do trabalhador
 	public void addNewContract(HourContract novoContrato) { 
 		
 		listContracts.add(novoContrato); 
-		System.out.println("\nContrato registrado com sucesso!");
+		System.out.println("\nContrato registrado com sucesso!\n");
 	}
 	
-	public void income(int year, int month) { // soma quanto o trabalhador irá receber naqele mês, somando todos os contratos daquele mês junto com o salário
-		double somaDoValorGanho = baseSalary;
-		Calendar calendario = Calendar.getInstance();
-		for(HourContract contrato : listContracts) {
-			calendario.setTime(calendario.getTime());
-			int calendar_year = calendario.get(Calendar.YEAR);
-			int calendar_month = calendario.get(Calendar.MONTH);
-			if(month == calendar_month && year == calendar_year) {
-				somaDoValorGanho += contrato.totalValue();
-			}
-		}
+	public void removeContract() { 
+		Scanner digitar = new Scanner(System.in);
+		
+		getListContracts();
+		System.out.print("Digite qual o número do contrato que deseja remover: ");
+		int numeroDoContrato = digitar.nextInt();
+		listContracts.remove(numeroDoContrato - 1);
+		System.out.println("\nContrato removido com sucesso!");
 	}
 	
 	public String toString() {

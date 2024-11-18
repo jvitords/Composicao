@@ -1,12 +1,11 @@
 package entities;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class HourContract { // class dos contratos que o trabalhador pode ter
+public class HourContract { // class dos contratos do trabalhador
 	Scanner digitar = new Scanner(System.in);
+	
 	private Date date;
 	private Double valuePerHour;
 	private Integer hours;

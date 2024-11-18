@@ -59,13 +59,15 @@ public class Main { public static void main(String[] args) throws ParseException
 	Date dataDoContrato = formatoDaData.parse(digitar.next());
 	System.out.print("Valor por hora: ");
 	double valorPorHora = digitar.nextInt();
-	System.out.print("Valor por hora: ");
+	System.out.print("horas trabalhadas: ");
 	int horasTrabalhadas = digitar.nextInt();
 	
 	HourContract novoContrato = new HourContract(dataDoContrato, valorPorHora, horasTrabalhadas);
 	
 	trabalhador.addNewContract(novoContrato);
-	trabalhador.getListContracts();
+	//trabalhador.getListContracts();	
+	//trabalhador.removeContract();
+	//trabalhador.getListContracts();
 	
 	digitar.close();
 	}
